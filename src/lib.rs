@@ -15,3 +15,4 @@ pub use appstream::Release;
 pub use appstream::Screenshot;
 pub use appstream::ScreenshotSizes;
 pub use appstream::Urls;
+pub use home_page::HomePage;
