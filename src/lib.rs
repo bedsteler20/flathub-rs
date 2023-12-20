@@ -3,7 +3,7 @@ mod appstream;
 mod pagination;
 mod utils;
 mod client;
-
+mod home_page;
 pub use client::Client;
 pub use app_hit::AppHit;
 pub use pagination::Pagination;

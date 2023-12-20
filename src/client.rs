@@ -2,6 +2,7 @@ use std::collections::HashMap;
 
 use crate::app_hit::AppHit;
 use crate::appstream::Appstream;
+use crate::home_page::HomePage;
 use crate::pagination::Pagination;
 
 #[derive(Debug, Clone)]
@@ -230,6 +231,21 @@ impl Client {
         let appstream: Appstream = resp.json().await?;
         Ok(appstream)
     }
+
+    pub async fn home_page(&self, items: i32) -> Result<HomePage, reqwest::Error> {
+        let (popular_apps, new_apps, updated_apps, verified_apps) = tokio::join!(
+            self.popular_apps(1, items),
+            self.recently_added_apps(1, items),
+            self.recently_updated_apps(1, items),
+            self.verified_apps(1, items)
+        );
+        Ok(HomePage {
+            popular_apps: popular_apps?.hits,
+            new_apps: new_apps?.hits,
+            updated_apps: updated_apps?.hits,
+            verified_apps: verified_apps?.hits,
+        })
+    }
 }
 
 #[cfg(test)]
@@ -368,7 +384,7 @@ mod tests {
     // to enable it run cargo test -- --ignored --nocapture
     #[tokio::test]
     #[ignore]
-    async fn  test_all() {
+    async fn test_all() {
         let client = Client::new();
         for app in client.list_all_app_ids().await.unwrap().iter() {
             println!("app: {}", app);
@@ -378,7 +394,6 @@ mod tests {
                     println!("error: {}", e);
                     continue;
                 }
-                
             }
         }
     }
