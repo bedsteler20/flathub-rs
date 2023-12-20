@@ -4,6 +4,7 @@ use crate::app_hit::AppHit;
 use crate::appstream::Appstream;
 use crate::pagination::Pagination;
 
+#[derive(Debug, Clone)]
 pub struct Client {
     reqwest: reqwest::Client,
     base_url: String,
