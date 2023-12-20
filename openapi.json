@@ -1,0 +1,1837 @@
+{
+    "openapi": "3.0.3",
+    "info": { "title": "Flathub API", "version": "0.1.0" },
+    "servers": [{ "url": "/api/v2" }],
+    "paths": {
+        "/eol/rebase": {
+            "get": {
+                "tags": ["app"],
+                "summary": "Get Eol Rebase",
+                "operationId": "get_eol_rebase_eol_rebase_get",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "additionalProperties": {
+                                        "items": { "type": "string" },
+                                        "type": "array"
+                                    },
+                                    "type": "object",
+                                    "title": "Response Get Eol Rebase Eol Rebase Get"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/eol/rebase/{app_id}": {
+            "get": {
+                "tags": ["app"],
+                "summary": "Get Eol Rebase Appid",
+                "operationId": "get_eol_rebase_appid_eol_rebase__app_id__get",
+                "parameters": [
+                    {
+                        "name": "app_id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "minLength": 6,
+                            "maxLength": 255,
+                            "pattern": "^[A-Za-z_][\\w\\-\\.]+$",
+                            "examples": ["org.gnome.Glade"],
+                            "title": "App Id"
+                        }
+                    },
+                    {
+                        "name": "branch",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": "stable",
+                            "title": "Branch"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "anyOf": [
+                                        { "type": "string" },
+                                        { "type": "null" }
+                                    ],
+                                    "title": "Response Get Eol Rebase Appid Eol Rebase  App Id  Get"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/eol/message": {
+            "get": {
+                "tags": ["app"],
+                "summary": "Get Eol Message",
+                "operationId": "get_eol_message_eol_message_get",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "additionalProperties": {
+                                        "type": "string"
+                                    },
+                                    "type": "object",
+                                    "title": "Response Get Eol Message Eol Message Get"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/eol/message/{app_id}": {
+            "get": {
+                "tags": ["app"],
+                "summary": "Get Eol Message Appid",
+                "operationId": "get_eol_message_appid_eol_message__app_id__get",
+                "parameters": [
+                    {
+                        "name": "app_id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "minLength": 6,
+                            "maxLength": 255,
+                            "pattern": "^[A-Za-z_][\\w\\-\\.]+$",
+                            "examples": ["org.gnome.Glade"],
+                            "title": "App Id"
+                        }
+                    },
+                    {
+                        "name": "branch",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": "stable",
+                            "title": "Branch"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "anyOf": [
+                                        { "type": "string" },
+                                        { "type": "null" }
+                                    ],
+                                    "title": "Response Get Eol Message Appid Eol Message  App Id  Get"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/appstream/{app_id}": {
+            "get": {
+                "tags": ["app"],
+                "summary": "Get Appstream",
+                "operationId": "get_appstream_appstream__app_id__get",
+                "parameters": [
+                    {
+                        "name": "app_id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "minLength": 6,
+                            "maxLength": 255,
+                            "pattern": "^[A-Za-z_][\\w\\-\\.]+$",
+                            "examples": ["org.gnome.Glade"],
+                            "title": "App Id"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": { "application/json": { "schema": {} } }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/search": {
+            "post": {
+                "tags": ["app"],
+                "summary": "Post Search",
+                "operationId": "post_search_search_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SearchQuery"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": { "application/json": { "schema": {} } }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/stats": {
+            "get": {
+                "tags": ["app"],
+                "summary": "Get Stats",
+                "operationId": "get_stats_stats_get",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": { "application/json": { "schema": {} } }
+                    }
+                }
+            }
+        },
+        "/stats/{app_id}": {
+            "get": {
+                "tags": ["app"],
+                "summary": "Get Stats For App",
+                "operationId": "get_stats_for_app_stats__app_id__get",
+                "parameters": [
+                    {
+                        "name": "app_id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "minLength": 6,
+                            "maxLength": 255,
+                            "pattern": "^[A-Za-z_][\\w\\-\\.]+$",
+                            "examples": ["org.gnome.Glade"],
+                            "title": "App Id"
+                        }
+                    },
+                    {
+                        "name": "all",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "boolean",
+                            "default": false,
+                            "title": "All"
+                        }
+                    },
+                    {
+                        "name": "days",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "default": 180,
+                            "title": "Days"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": { "application/json": { "schema": {} } }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/summary/{app_id}": {
+            "get": {
+                "tags": ["app"],
+                "summary": "Get Summary",
+                "operationId": "get_summary_summary__app_id__get",
+                "parameters": [
+                    {
+                        "name": "app_id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "minLength": 6,
+                            "maxLength": 255,
+                            "pattern": "^[A-Za-z_][\\w\\-\\.]+$",
+                            "examples": ["org.gnome.Glade"],
+                            "title": "App Id"
+                        }
+                    },
+                    {
+                        "name": "branch",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "anyOf": [{ "type": "string" }, { "type": "null" }],
+                            "title": "Branch"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": { "application/json": { "schema": {} } }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+     
+        "/addon/{app_id}": {
+            "get": {
+                "tags": ["app"],
+                "summary": "Get Addons",
+                "operationId": "get_addons_addon__app_id__get",
+                "parameters": [
+                    {
+                        "name": "app_id",
+                        "in": "path",
+                        "required": true,
+                        "schema": { "type": "string", "title": "App Id" }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": { "type": "string" },
+                                    "title": "Response Get Addons Addon  App Id  Get"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/app-picks/app-of-the-day/{date}": {
+            "get": {
+                "tags": ["app-picks"],
+                "summary": "Get App Of The Day",
+                "operationId": "get_app_of_the_day_app_picks_app_of_the_day__date__get",
+                "parameters": [
+                    {
+                        "name": "date",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "date",
+                            "examples": ["2021-01-01", "2023-10-21"],
+                            "title": "Date"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AppOfTheDay"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/app-picks/apps-of-the-week/{date}": {
+            "get": {
+                "tags": ["app-picks"],
+                "summary": "Get App Of The Week",
+                "description": "Returns apps of the week",
+                "operationId": "get_app_of_the_week_app_picks_apps_of_the_week__date__get",
+                "parameters": [
+                    {
+                        "name": "date",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "date",
+                            "examples": ["2021-01-01", "2023-10-21"],
+                            "title": "Date"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AppsOfTheWeek"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/status": {
+            "get": {
+                "tags": ["healthcheck"],
+                "summary": "Healthcheck",
+                "operationId": "healthcheck_status_get",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": { "application/json": { "schema": {} } }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "AppOfTheDay": {
+                "properties": {
+                    "app_id": { "type": "string", "title": "App Id" }
+                },
+                "type": "object",
+                "required": ["app_id"],
+                "title": "AppOfTheDay"
+            },
+            "AppOfTheWeek": {
+                "properties": {
+                    "app_id": { "type": "string", "title": "App Id" },
+                    "position": { "type": "integer", "title": "Position" }
+                },
+                "type": "object",
+                "required": ["app_id", "position"],
+                "title": "AppOfTheWeek"
+            },
+            "AppsOfTheWeek": {
+                "properties": {
+                    "apps": {
+                        "items": {
+                            "$ref": "#/components/schemas/AppOfTheWeek"
+                        },
+                        "type": "array",
+                        "title": "Apps"
+                    }
+                },
+                "type": "object",
+                "required": ["apps"],
+                "title": "AppsOfTheWeek"
+            },
+            "AvailableLoginMethodStatus": {
+                "type": "string",
+                "enum": [
+                    "ready",
+                    "user_does_not_exist",
+                    "username_does_not_match",
+                    "provider_denied_access",
+                    "not_logged_in",
+                    "not_org_member",
+                    "not_org_admin"
+                ],
+                "title": "AvailableLoginMethodStatus"
+            },
+            "AvailableMethod": {
+                "properties": {
+                    "method": {
+                        "$ref": "#/components/schemas/AvailableMethodType"
+                    },
+                    "website": {
+                        "anyOf": [{ "type": "string" }, { "type": "null" }],
+                        "title": "Website"
+                    },
+                    "website_token": {
+                        "anyOf": [{ "type": "string" }, { "type": "null" }],
+                        "title": "Website Token"
+                    },
+                    "login_provider": {
+                        "anyOf": [
+                            { "$ref": "#/components/schemas/LoginProvider" },
+                            { "type": "null" }
+                        ]
+                    },
+                    "login_name": {
+                        "anyOf": [{ "type": "string" }, { "type": "null" }],
+                        "title": "Login Name"
+                    },
+                    "login_is_organization": {
+                        "anyOf": [{ "type": "boolean" }, { "type": "null" }],
+                        "title": "Login Is Organization"
+                    },
+                    "login_status": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/AvailableLoginMethodStatus"
+                            },
+                            { "type": "null" }
+                        ]
+                    }
+                },
+                "type": "object",
+                "required": ["method"],
+                "title": "AvailableMethod"
+            },
+            "AvailableMethodType": {
+                "type": "string",
+                "enum": ["website", "login_provider"],
+                "title": "AvailableMethodType"
+            },
+            "AvailableMethods": {
+                "properties": {
+                    "methods": {
+                        "anyOf": [
+                            {
+                                "items": {
+                                    "$ref": "#/components/schemas/AvailableMethod"
+                                },
+                                "type": "array"
+                            },
+                            { "type": "null" }
+                        ],
+                        "title": "Methods"
+                    },
+                    "detail": {
+                        "anyOf": [{ "type": "string" }, { "type": "null" }],
+                        "title": "Detail"
+                    }
+                },
+                "type": "object",
+                "title": "AvailableMethods"
+            },
+            "Body_get_download_token_purchases_generate_download_token_post": {
+                "properties": {
+                    "appids": {
+                        "items": { "type": "string" },
+                        "type": "array",
+                        "title": "Appids"
+                    },
+                    "update_token": {
+                        "type": "string",
+                        "title": "Update Token"
+                    }
+                },
+                "type": "object",
+                "required": ["appids"],
+                "title": "Body_get_download_token_purchases_generate_download_token_post"
+            },
+            "BuildNotificationRequest": {
+                "properties": {
+                    "app_id": { "type": "string", "title": "App Id" },
+                    "build_id": { "type": "integer", "title": "Build Id" },
+                    "build_repo": { "type": "string", "title": "Build Repo" },
+                    "diagnostics": {
+                        "items": {},
+                        "type": "array",
+                        "title": "Diagnostics"
+                    }
+                },
+                "type": "object",
+                "required": ["app_id", "build_id", "build_repo", "diagnostics"],
+                "title": "BuildNotificationRequest"
+            },
+            "ConnectedAccountProvider": {
+                "type": "string",
+                "enum": ["github", "gitlab", "gnome", "google", "kde"],
+                "title": "ConnectedAccountProvider"
+            },
+            "Developer": {
+                "properties": {
+                    "id": { "type": "integer", "title": "Id" },
+                    "is_self": { "type": "boolean", "title": "Is Self" },
+                    "name": {
+                        "anyOf": [{ "type": "string" }, { "type": "null" }],
+                        "title": "Name"
+                    },
+                    "is_primary": {
+                        "anyOf": [{ "type": "boolean" }, { "type": "null" }],
+                        "title": "Is Primary"
+                    }
+                },
+                "type": "object",
+                "required": ["id", "is_self", "name"],
+                "title": "Developer"
+            },
+            "DevelopersResponse": {
+                "properties": {
+                    "developers": {
+                        "items": { "$ref": "#/components/schemas/Developer" },
+                        "type": "array",
+                        "title": "Developers"
+                    },
+                    "invites": {
+                        "items": { "$ref": "#/components/schemas/Developer" },
+                        "type": "array",
+                        "title": "Invites"
+                    }
+                },
+                "type": "object",
+                "required": ["developers", "invites"],
+                "title": "DevelopersResponse"
+            },
+            "ErrorDetail": {
+                "type": "string",
+                "enum": [
+                    "malformed_app_id",
+                    "not_app_developer",
+                    "invalid_method",
+                    "failed_to_connect",
+                    "server_returned_error",
+                    "app_not_listed",
+                    "blocked_by_admins",
+                    "not_logged_in",
+                    "username_does_not_match",
+                    "user_does_not_exist",
+                    "provider_error",
+                    "provider_denied_access",
+                    "not_org_member",
+                    "not_org_admin",
+                    "app_already_verified",
+                    "must_set_up_first",
+                    "app_already_exists",
+                    "must_accept_publisher_agreement"
+                ],
+                "title": "ErrorDetail"
+            },
+            "FailedByGuideline": {
+                "properties": {
+                    "guideline_id": {
+                        "type": "string",
+                        "title": "Guideline Id"
+                    },
+                    "not_passed": { "type": "integer", "title": "Not Passed" }
+                },
+                "type": "object",
+                "required": ["guideline_id", "not_passed"],
+                "title": "FailedByGuideline"
+            },
+            "Filter": {
+                "properties": {
+                    "filterType": { "type": "string", "title": "Filtertype" },
+                    "value": { "type": "string", "title": "Value" }
+                },
+                "/exceptions": {
+                    "get": {
+                        "tags": ["app"],
+                        "summary": "Get Exceptions",
+                        "operationId": "get_exceptions_exceptions_get",
+                        "responses": {
+                            "200": {
+                                "description": "Successful Response",
+                                "content": { "application/json": { "schema": {} } }
+                            }
+                        }
+                    }
+                },
+                "/exceptions/{app_id}": {
+                    "get": {
+                        "tags": ["app"],
+                        "summary": "Get Exceptions For App",
+                        "operationId": "get_exceptions_for_app_exceptions__app_id__get",
+                        "parameters": [
+                            {
+                                "name": "app_id",
+                                "in": "path",
+                                "required": true,
+                                "schema": { "type": "string", "title": "App Id" }
+                            }
+                        ],
+                        "responses": {
+                            "200": {
+                                "description": "Successful Response",
+                                "content": { "application/json": { "schema": {} } }
+                            },
+                            "422": {
+                                "description": "Validation Error",
+                                "content": {
+                                    "application/json": {
+                                        "schema": {
+                                            "$ref": "#/components/schemas/HTTPValidationError"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "type": "object",
+                "required": ["filterType", "value"],
+                "title": "Filter"
+            },
+            "Guideline": {
+                "properties": {
+                    "id": { "type": "string", "title": "Id" },
+                    "url": { "type": "string", "title": "Url" },
+                    "needed_to_pass_since": {
+                        "type": "string",
+                        "format": "date-time",
+                        "title": "Needed To Pass Since"
+                    },
+                    "category": { "type": "string", "title": "Category" },
+                    "read_only": {
+                        "type": "boolean",
+                        "title": "Read Only",
+                        "default": false
+                    }
+                },
+                "type": "object",
+                "required": ["id", "url", "needed_to_pass_since", "category"],
+                "title": "Guideline"
+            },
+            "HTTPValidationError": {
+                "properties": {
+                    "detail": {
+                        "items": {
+                            "$ref": "#/components/schemas/ValidationError"
+                        },
+                        "type": "array",
+                        "title": "Detail"
+                    }
+                },
+                "type": "object",
+                "title": "HTTPValidationError"
+            },
+            "InviteStatus": {
+                "properties": {
+                    "is_pending": { "type": "boolean", "title": "Is Pending" },
+                    "is_direct_upload_app": {
+                        "type": "boolean",
+                        "title": "Is Direct Upload App",
+                        "default": true
+                    }
+                },
+                "type": "object",
+                "required": ["is_pending"],
+                "title": "InviteStatus"
+            },
+            "LinkResponse": {
+                "properties": { "link": { "type": "string", "title": "Link" } },
+                "type": "object",
+                "required": ["link"],
+                "title": "LinkResponse"
+            },
+            "LoginMethod": {
+                "properties": {
+                    "method": { "type": "string", "title": "Method" },
+                    "name": { "type": "string", "title": "Name" }
+                },
+                "type": "object",
+                "required": ["method", "name"],
+                "title": "LoginMethod"
+            },
+            "LoginProvider": {
+                "type": "string",
+                "enum": ["github", "gitlab", "gnome", "kde"],
+                "title": "LoginProvider"
+            },
+            "MainCategory": {
+                "type": "string",
+                "enum": [
+                    "audiovideo",
+                    "development",
+                    "education",
+                    "game",
+                    "graphics",
+                    "network",
+                    "office",
+                    "science",
+                    "system",
+                    "utility"
+                ],
+                "title": "MainCategory"
+            },
+            "ModerationApp": {
+                "properties": {
+                    "requests": {
+                        "items": {
+                            "$ref": "#/components/schemas/ModerationRequestResponse"
+                        },
+                        "type": "array",
+                        "title": "Requests"
+                    },
+                    "requests_count": {
+                        "type": "integer",
+                        "title": "Requests Count"
+                    }
+                },
+                "type": "object",
+                "required": ["requests", "requests_count"],
+                "title": "ModerationApp"
+            },
+            "ModerationAppItem": {
+                "properties": {
+                    "appid": { "type": "string", "title": "Appid" },
+                    "is_new_submission": {
+                        "type": "boolean",
+                        "title": "Is New Submission"
+                    },
+                    "updated_at": {
+                        "anyOf": [
+                            { "type": "string", "format": "date-time" },
+                            { "type": "null" }
+                        ],
+                        "title": "Updated At"
+                    },
+                    "request_types": {
+                        "items": {
+                            "$ref": "#/components/schemas/ModerationRequestType"
+                        },
+                        "type": "array",
+                        "title": "Request Types"
+                    }
+                },
+                "type": "object",
+                "required": ["appid", "is_new_submission", "request_types"],
+                "title": "ModerationAppItem"
+            },
+            "ModerationAppsResponse": {
+                "properties": {
+                    "apps": {
+                        "items": {
+                            "$ref": "#/components/schemas/ModerationAppItem"
+                        },
+                        "type": "array",
+                        "title": "Apps"
+                    },
+                    "apps_count": { "type": "integer", "title": "Apps Count" }
+                },
+                "type": "object",
+                "required": ["apps", "apps_count"],
+                "title": "ModerationAppsResponse"
+            },
+            "ModerationRequestResponse": {
+                "properties": {
+                    "id": { "type": "integer", "title": "Id" },
+                    "app_id": { "type": "string", "title": "App Id" },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "title": "Created At"
+                    },
+                    "build_id": { "type": "integer", "title": "Build Id" },
+                    "job_id": { "type": "integer", "title": "Job Id" },
+                    "is_outdated": {
+                        "type": "boolean",
+                        "title": "Is Outdated"
+                    },
+                    "request_type": {
+                        "$ref": "#/components/schemas/ModerationRequestType"
+                    },
+                    "request_data": {
+                        "anyOf": [
+                            { "$ref": "#/components/schemas/RequestData" },
+                            { "type": "null" }
+                        ]
+                    },
+                    "is_new_submission": {
+                        "type": "boolean",
+                        "title": "Is New Submission"
+                    },
+                    "handled_by": {
+                        "anyOf": [{ "type": "string" }, { "type": "null" }],
+                        "title": "Handled By"
+                    },
+                    "handled_at": {
+                        "anyOf": [
+                            { "type": "string", "format": "date-time" },
+                            { "type": "null" }
+                        ],
+                        "title": "Handled At"
+                    },
+                    "is_approved": {
+                        "anyOf": [{ "type": "boolean" }, { "type": "null" }],
+                        "title": "Is Approved"
+                    },
+                    "comment": {
+                        "anyOf": [{ "type": "string" }, { "type": "null" }],
+                        "title": "Comment"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id",
+                    "app_id",
+                    "created_at",
+                    "build_id",
+                    "job_id",
+                    "is_outdated",
+                    "request_type",
+                    "is_new_submission"
+                ],
+                "title": "ModerationRequestResponse"
+            },
+            "ModerationRequestType": {
+                "type": "string",
+                "const": "appdata",
+                "title": "ModerationRequestType"
+            },
+            "NascentTransaction": {
+                "properties": {
+                    "summary": {
+                        "$ref": "#/components/schemas/NascentTransactionSummary"
+                    },
+                    "details": {
+                        "items": {
+                            "$ref": "#/components/schemas/TransactionRow"
+                        },
+                        "type": "array",
+                        "title": "Details"
+                    }
+                },
+                "type": "object",
+                "required": ["summary", "details"],
+                "title": "NascentTransaction"
+            },
+            "NascentTransactionSummary": {
+                "properties": {
+                    "value": { "type": "integer", "title": "Value" },
+                    "currency": { "type": "string", "title": "Currency" },
+                    "kind": {
+                        "type": "string",
+                        "enum": ["donation", "purchase"],
+                        "title": "Kind"
+                    }
+                },
+                "type": "object",
+                "required": ["value", "currency", "kind"],
+                "title": "NascentTransactionSummary"
+            },
+            "NewTokenResponse": {
+                "properties": {
+                    "token": { "type": "string", "title": "Token" },
+                    "details": { "$ref": "#/components/schemas/TokenResponse" }
+                },
+                "type": "object",
+                "required": ["token", "details"],
+                "title": "NewTokenResponse"
+            },
+            "OauthLoginResponseFailure": {
+                "properties": {
+                    "state": { "type": "string", "title": "State" },
+                    "error": { "type": "string", "title": "Error" },
+                    "error_description": {
+                        "anyOf": [{ "type": "string" }, { "type": "null" }],
+                        "title": "Error Description"
+                    },
+                    "error_uri": {
+                        "anyOf": [{ "type": "string" }, { "type": "null" }],
+                        "title": "Error Uri"
+                    }
+                },
+                "type": "object",
+                "required": ["state", "error"],
+                "title": "OauthLoginResponseFailure"
+            },
+            "OauthLoginResponseSuccess": {
+                "properties": {
+                    "code": { "type": "string", "title": "Code" },
+                    "state": { "type": "string", "title": "State" }
+                },
+                "type": "object",
+                "required": ["code", "state"],
+                "title": "OauthLoginResponseSuccess"
+            },
+            "Pagination": {
+                "properties": {
+                    "page": { "type": "integer", "title": "Page" },
+                    "page_size": { "type": "integer", "title": "Page Size" },
+                    "total": { "type": "integer", "title": "Total" },
+                    "total_pages": { "type": "integer", "title": "Total Pages" }
+                },
+                "type": "object",
+                "required": ["page", "page_size", "total", "total_pages"],
+                "title": "Pagination"
+            },
+            "PaymentCardInfo": {
+                "properties": {
+                    "id": { "type": "string", "title": "Id" },
+                    "brand": { "type": "string", "title": "Brand" },
+                    "country": { "type": "string", "title": "Country" },
+                    "exp_month": { "type": "integer", "title": "Exp Month" },
+                    "exp_year": { "type": "integer", "title": "Exp Year" },
+                    "last4": { "type": "string", "title": "Last4" }
+                },
+                "type": "object",
+                "required": [
+                    "id",
+                    "brand",
+                    "country",
+                    "exp_month",
+                    "exp_year",
+                    "last4"
+                ],
+                "title": "PaymentCardInfo"
+            },
+            "Platform": {
+                "properties": {
+                    "depends": {
+                        "anyOf": [{ "type": "string" }, { "type": "null" }],
+                        "title": "Depends"
+                    },
+                    "aliases": {
+                        "items": { "type": "string" },
+                        "type": "array",
+                        "title": "Aliases"
+                    },
+                    "keep": { "type": "integer", "title": "Keep" },
+                    "stripe_account": {
+                        "anyOf": [{ "type": "string" }, { "type": "null" }],
+                        "title": "Stripe Account"
+                    }
+                },
+                "type": "object",
+                "required": ["aliases", "keep"],
+                "title": "Platform",
+                "description": "A platform is an expression of dependencies which an application may have.\nApplications nominally express a single platform key for themselves, or\nnone at all if they do not need one.  But platforms may depend on one another.\n\nIf no platform is specified for an application, it's worth getting the default\nplatform and using that."
+            },
+            "PricingInfo": {
+                "properties": {
+                    "recommended_donation": {
+                        "anyOf": [{ "type": "integer" }, { "type": "null" }],
+                        "title": "Recommended Donation"
+                    },
+                    "minimum_payment": {
+                        "anyOf": [{ "type": "integer" }, { "type": "null" }],
+                        "title": "Minimum Payment"
+                    }
+                },
+                "type": "object",
+                "title": "PricingInfo"
+            },
+            "ProposedPayment": {
+                "properties": {
+                    "currency": { "type": "string", "title": "Currency" },
+                    "amount": { "type": "integer", "title": "Amount" }
+                },
+                "type": "object",
+                "required": ["currency", "amount"],
+                "title": "ProposedPayment",
+                "description": "Proposed payment to be made for an application"
+            },
+            "QualityModerationDashboardResponse": {
+                "properties": {
+                    "apps": {
+                        "items": {
+                            "$ref": "#/components/schemas/QualityModerationDashboardRow"
+                        },
+                        "type": "array",
+                        "title": "Apps"
+                    },
+                    "pagination": { "$ref": "#/components/schemas/Pagination" }
+                },
+                "type": "object",
+                "required": ["apps", "pagination"],
+                "title": "QualityModerationDashboardResponse"
+            },
+            "QualityModerationDashboardRow": {
+                "properties": {
+                    "id": { "type": "string", "title": "Id" },
+                    "quality_moderation_status": {
+                        "$ref": "#/components/schemas/QualityModerationStatus"
+                    },
+                    "appstream": {
+                        "anyOf": [{}, { "type": "null" }],
+                        "title": "Appstream"
+                    },
+                    "installs_last_7_days": {
+                        "anyOf": [{ "type": "integer" }, { "type": "null" }],
+                        "title": "Installs Last 7 Days"
+                    }
+                },
+                "type": "object",
+                "required": ["id", "quality_moderation_status"],
+                "title": "QualityModerationDashboardRow"
+            },
+            "QualityModerationResponse": {
+                "properties": {
+                    "guidelines": {
+                        "items": {
+                            "$ref": "#/components/schemas/QualityModerationType"
+                        },
+                        "type": "array",
+                        "title": "Guidelines"
+                    },
+                    "is_fullscreen_app": {
+                        "type": "boolean",
+                        "title": "Is Fullscreen App"
+                    },
+                    "review_requested_at": {
+                        "anyOf": [
+                            { "type": "string", "format": "date-time" },
+                            { "type": "null" }
+                        ],
+                        "title": "Review Requested At"
+                    }
+                },
+                "type": "object",
+                "required": ["guidelines", "is_fullscreen_app"],
+                "title": "QualityModerationResponse"
+            },
+            "QualityModerationStatus": {
+                "properties": {
+                    "passes": { "type": "boolean", "title": "Passes" },
+                    "unrated": { "type": "integer", "title": "Unrated" },
+                    "passed": { "type": "integer", "title": "Passed" },
+                    "not_passed": { "type": "integer", "title": "Not Passed" },
+                    "last_updated": {
+                        "anyOf": [
+                            { "type": "string", "format": "date-time" },
+                            { "type": "null" }
+                        ],
+                        "title": "Last Updated"
+                    },
+                    "review_requested_at": {
+                        "anyOf": [
+                            { "type": "string", "format": "date-time" },
+                            { "type": "null" }
+                        ],
+                        "title": "Review Requested At"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "passes",
+                    "unrated",
+                    "passed",
+                    "not_passed",
+                    "last_updated"
+                ],
+                "title": "QualityModerationStatus"
+            },
+            "QualityModerationType": {
+                "properties": {
+                    "guideline_id": {
+                        "type": "string",
+                        "title": "Guideline Id"
+                    },
+                    "guideline": { "$ref": "#/components/schemas/Guideline" },
+                    "app_id": { "type": "string", "title": "App Id" },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "title": "Updated At"
+                    },
+                    "updated_by": {
+                        "anyOf": [{ "type": "integer" }, { "type": "null" }],
+                        "title": "Updated By"
+                    },
+                    "passed": {
+                        "anyOf": [{ "type": "boolean" }, { "type": "null" }],
+                        "title": "Passed"
+                    },
+                    "comment": {
+                        "anyOf": [{ "type": "string" }, { "type": "null" }],
+                        "title": "Comment"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "guideline_id",
+                    "guideline",
+                    "app_id",
+                    "updated_at",
+                    "updated_by",
+                    "passed",
+                    "comment"
+                ],
+                "title": "QualityModerationType"
+            },
+            "RedemptionResult": {
+                "properties": {
+                    "status": { "type": "string", "title": "Status" },
+                    "reason": { "type": "string", "title": "Reason" }
+                },
+                "type": "object",
+                "required": ["status", "reason"],
+                "title": "RedemptionResult"
+            },
+            "RequestData": {
+                "properties": {
+                    "keys": {
+                        "additionalProperties": {
+                            "anyOf": [{ "type": "string" }, { "type": "null" }]
+                        },
+                        "type": "object",
+                        "title": "Keys"
+                    },
+                    "current_values": {
+                        "additionalProperties": {
+                            "anyOf": [{ "type": "string" }, { "type": "null" }]
+                        },
+                        "type": "object",
+                        "title": "Current Values"
+                    }
+                },
+                "type": "object",
+                "required": ["keys", "current_values"],
+                "title": "RequestData"
+            },
+            "Review": {
+                "properties": {
+                    "approve": { "type": "boolean", "title": "Approve" },
+                    "comment": {
+                        "anyOf": [{ "type": "string" }, { "type": "null" }],
+                        "title": "Comment"
+                    }
+                },
+                "type": "object",
+                "required": ["approve"],
+                "title": "Review"
+            },
+            "ReviewRequest": {
+                "properties": {
+                    "build_id": { "type": "integer", "title": "Build Id" },
+                    "job_id": { "type": "integer", "title": "Job Id" }
+                },
+                "type": "object",
+                "required": ["build_id", "job_id"],
+                "title": "ReviewRequest"
+            },
+            "ReviewRequestResponse": {
+                "properties": {
+                    "requires_review": {
+                        "type": "boolean",
+                        "title": "Requires Review"
+                    }
+                },
+                "type": "object",
+                "required": ["requires_review"],
+                "title": "ReviewRequestResponse"
+            },
+            "SearchQuery": {
+                "properties": {
+                    "query": { "type": "string", "title": "Query" },
+                    "filters": {
+                        "anyOf": [
+                            {
+                                "items": {
+                                    "$ref": "#/components/schemas/Filter"
+                                },
+                                "type": "array"
+                            },
+                            { "type": "null" }
+                        ],
+                        "title": "Filters"
+                    }
+                },
+                "type": "object",
+                "required": ["query"],
+                "title": "SearchQuery"
+            },
+            "StorefrontInfo": {
+                "properties": {
+                    "verification": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/VerificationStatus"
+                            },
+                            { "type": "null" }
+                        ]
+                    },
+                    "pricing": {
+                        "anyOf": [
+                            { "$ref": "#/components/schemas/PricingInfo" },
+                            { "type": "null" }
+                        ]
+                    },
+                    "is_free_software": {
+                        "type": "boolean",
+                        "title": "Is Free Software",
+                        "default": false
+                    }
+                },
+                "type": "object",
+                "title": "StorefrontInfo"
+            },
+            "TokenCancellation": {
+                "properties": {
+                    "token": { "type": "string", "title": "Token" },
+                    "status": { "type": "string", "title": "Status" }
+                },
+                "type": "object",
+                "required": ["token", "status"],
+                "title": "TokenCancellation"
+            },
+            "TokenList": {
+                "properties": {
+                    "status": { "type": "string", "title": "Status" },
+                    "total": { "type": "integer", "title": "Total" },
+                    "tokens": {
+                        "items": { "$ref": "#/components/schemas/TokenModel" },
+                        "type": "array",
+                        "title": "Tokens"
+                    }
+                },
+                "type": "object",
+                "required": ["status", "total", "tokens"],
+                "title": "TokenList"
+            },
+            "TokenModel": {
+                "properties": {
+                    "id": { "type": "string", "title": "Id" },
+                    "state": { "type": "string", "title": "State" },
+                    "name": { "type": "string", "title": "Name" },
+                    "token": {
+                        "anyOf": [{ "type": "string" }, { "type": "null" }],
+                        "title": "Token"
+                    },
+                    "created": { "type": "string", "title": "Created" },
+                    "changed": { "type": "string", "title": "Changed" }
+                },
+                "type": "object",
+                "required": ["id", "state", "name", "created", "changed"],
+                "title": "TokenModel"
+            },
+            "TokenResponse": {
+                "properties": {
+                    "id": { "type": "integer", "title": "Id" },
+                    "comment": { "type": "string", "title": "Comment" },
+                    "app_id": { "type": "string", "title": "App Id" },
+                    "scopes": {
+                        "items": { "type": "string" },
+                        "type": "array",
+                        "title": "Scopes"
+                    },
+                    "repos": {
+                        "items": { "type": "string" },
+                        "type": "array",
+                        "title": "Repos"
+                    },
+                    "issued_at": { "type": "integer", "title": "Issued At" },
+                    "issued_to": {
+                        "anyOf": [{ "type": "string" }, { "type": "null" }],
+                        "title": "Issued To"
+                    },
+                    "expires_at": { "type": "integer", "title": "Expires At" },
+                    "revoked": { "type": "boolean", "title": "Revoked" }
+                },
+                "type": "object",
+                "required": [
+                    "id",
+                    "comment",
+                    "app_id",
+                    "scopes",
+                    "repos",
+                    "issued_at",
+                    "issued_to",
+                    "expires_at",
+                    "revoked"
+                ],
+                "title": "TokenResponse"
+            },
+            "TokensResponse": {
+                "properties": {
+                    "tokens": {
+                        "items": {
+                            "$ref": "#/components/schemas/TokenResponse"
+                        },
+                        "type": "array",
+                        "title": "Tokens"
+                    },
+                    "is_direct_upload_app": {
+                        "type": "boolean",
+                        "title": "Is Direct Upload App"
+                    }
+                },
+                "type": "object",
+                "required": ["tokens", "is_direct_upload_app"],
+                "title": "TokensResponse"
+            },
+            "Transaction": {
+                "properties": {
+                    "summary": {
+                        "$ref": "#/components/schemas/TransactionSummary"
+                    },
+                    "card": {
+                        "anyOf": [
+                            { "$ref": "#/components/schemas/PaymentCardInfo" },
+                            { "type": "null" }
+                        ]
+                    },
+                    "details": {
+                        "items": {
+                            "$ref": "#/components/schemas/TransactionRow"
+                        },
+                        "type": "array",
+                        "title": "Details"
+                    },
+                    "receipt": {
+                        "anyOf": [{ "type": "string" }, { "type": "null" }],
+                        "title": "Receipt"
+                    }
+                },
+                "type": "object",
+                "required": ["summary", "details"],
+                "title": "Transaction"
+            },
+            "TransactionRow": {
+                "properties": {
+                    "recipient": { "type": "string", "title": "Recipient" },
+                    "amount": { "type": "integer", "title": "Amount" },
+                    "currency": { "type": "string", "title": "Currency" },
+                    "kind": {
+                        "type": "string",
+                        "enum": ["donation", "purchase"],
+                        "title": "Kind"
+                    }
+                },
+                "type": "object",
+                "required": ["recipient", "amount", "currency", "kind"],
+                "title": "TransactionRow"
+            },
+            "TransactionSaveCard": {
+                "properties": {
+                    "save_card": {
+                        "anyOf": [
+                            {
+                                "type": "string",
+                                "enum": ["off_session", "on_session"]
+                            },
+                            { "type": "null" }
+                        ],
+                        "title": "Save Card"
+                    }
+                },
+                "type": "object",
+                "title": "TransactionSaveCard"
+            },
+            "TransactionSortOrder": {
+                "type": "string",
+                "enum": ["recent", "oldest"],
+                "title": "TransactionSortOrder",
+                "description": "Sorting of transactions, either most-recent first, or oldest first"
+            },
+            "TransactionSummary": {
+                "properties": {
+                    "id": { "type": "string", "title": "Id" },
+                    "value": { "type": "integer", "title": "Value" },
+                    "currency": { "type": "string", "title": "Currency" },
+                    "kind": {
+                        "type": "string",
+                        "enum": ["donation", "purchase"],
+                        "title": "Kind"
+                    },
+                    "status": { "type": "string", "title": "Status" },
+                    "reason": {
+                        "anyOf": [{ "type": "string" }, { "type": "null" }],
+                        "title": "Reason"
+                    },
+                    "created": {
+                        "anyOf": [{ "type": "integer" }, { "type": "null" }],
+                        "title": "Created"
+                    },
+                    "updated": {
+                        "anyOf": [{ "type": "integer" }, { "type": "null" }],
+                        "title": "Updated"
+                    }
+                },
+                "type": "object",
+                "required": ["id", "value", "currency", "kind", "status"],
+                "title": "TransactionSummary"
+            },
+            "UploadTokenRequest": {
+                "properties": {
+                    "comment": { "type": "string", "title": "Comment" },
+                    "scopes": {
+                        "items": { "type": "string" },
+                        "type": "array",
+                        "title": "Scopes"
+                    },
+                    "repos": {
+                        "items": { "type": "string" },
+                        "type": "array",
+                        "title": "Repos"
+                    }
+                },
+                "type": "object",
+                "required": ["comment", "scopes", "repos"],
+                "title": "UploadTokenRequest"
+            },
+            "UpsertAppOfTheWeek": {
+                "properties": {
+                    "app_id": { "type": "string", "title": "App Id" },
+                    "weekNumber": { "type": "integer", "title": "Weeknumber" },
+                    "year": { "type": "integer", "title": "Year" },
+                    "position": { "type": "integer", "title": "Position" }
+                },
+                "type": "object",
+                "required": ["app_id", "weekNumber", "year", "position"],
+                "title": "UpsertAppOfTheWeek"
+            },
+            "UpsertQualityModeration": {
+                "properties": {
+                    "guideline_id": {
+                        "type": "string",
+                        "title": "Guideline Id"
+                    },
+                    "passed": { "type": "boolean", "title": "Passed" }
+                },
+                "type": "object",
+                "required": ["guideline_id", "passed"],
+                "title": "UpsertQualityModeration"
+            },
+            "UserDeleteRequest": {
+                "properties": {
+                    "token": { "type": "string", "title": "Token" }
+                },
+                "type": "object",
+                "required": ["token"],
+                "title": "UserDeleteRequest"
+            },
+            "ValidationError": {
+                "properties": {
+                    "loc": {
+                        "items": {
+                            "anyOf": [
+                                { "type": "string" },
+                                { "type": "integer" }
+                            ]
+                        },
+                        "type": "array",
+                        "title": "Location"
+                    },
+                    "msg": { "type": "string", "title": "Message" },
+                    "type": { "type": "string", "title": "Error Type" }
+                },
+                "type": "object",
+                "required": ["loc", "msg", "type"],
+                "title": "ValidationError"
+            },
+            "VendingApplicationInformation": {
+                "properties": {
+                    "app_id": { "type": "string", "title": "App Id" },
+                    "kind": {
+                        "type": "string",
+                        "enum": ["GAME", "PRODUCTIVITY", "GENERIC"],
+                        "title": "Kind"
+                    },
+                    "kind_reason": { "type": "string", "title": "Kind Reason" },
+                    "foss": { "type": "boolean", "title": "Foss" },
+                    "foss_reason": { "type": "string", "title": "Foss Reason" }
+                },
+                "type": "object",
+                "required": [
+                    "app_id",
+                    "kind",
+                    "kind_reason",
+                    "foss",
+                    "foss_reason"
+                ],
+                "title": "VendingApplicationInformation",
+                "description": "Information about an app, including tax code etc"
+            },
+            "VendingConfig": {
+                "properties": {
+                    "status": { "type": "string", "title": "Status" },
+                    "platforms": {
+                        "additionalProperties": {
+                            "$ref": "#/components/schemas/Platform"
+                        },
+                        "type": "object",
+                        "title": "Platforms"
+                    },
+                    "fee_fixed_cost": {
+                        "type": "integer",
+                        "title": "Fee Fixed Cost"
+                    },
+                    "fee_cost_percent": {
+                        "type": "integer",
+                        "title": "Fee Cost Percent"
+                    },
+                    "fee_prefer_percent": {
+                        "type": "integer",
+                        "title": "Fee Prefer Percent"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "status",
+                    "platforms",
+                    "fee_fixed_cost",
+                    "fee_cost_percent",
+                    "fee_prefer_percent"
+                ],
+                "title": "VendingConfig",
+                "description": "Global vending environment configuration values"
+            },
+            "VendingOnboardingRequest": {
+                "properties": {
+                    "return_url": { "type": "string", "title": "Return Url" }
+                },
+                "type": "object",
+                "required": ["return_url"],
+                "title": "VendingOnboardingRequest",
+                "description": "A request to begin/continue the onboarding process for a user.\n\nAny onboarding operation request a 'return' URL which we will tell Stripe\nto send us back to."
+            },
+            "VendingOutput": {
+                "properties": {
+                    "status": { "type": "string", "title": "Status" },
+                    "transaction": { "type": "string", "title": "Transaction" }
+                },
+                "type": "object",
+                "required": ["status", "transaction"],
+                "title": "VendingOutput",
+                "description": "Result from attempting to make a proposed payment"
+            },
+            "VendingRedirect": {
+                "properties": {
+                    "status": { "type": "string", "title": "Status" },
+                    "target_url": { "type": "string", "title": "Target Url" }
+                },
+                "type": "object",
+                "required": ["status", "target_url"],
+                "title": "VendingRedirect",
+                "description": "Any redirect the vending system needs to create will be returned like this.\n\nStatus will be \"ok\" otherwise you cannot rely on target_url and instead\nsomething look for like error."
+            },
+            "VendingSetup": {
+                "properties": {
+                    "currency": { "type": "string", "title": "Currency" },
+                    "appshare": { "type": "integer", "title": "Appshare" },
+                    "recommended_donation": {
+                        "type": "integer",
+                        "title": "Recommended Donation"
+                    },
+                    "minimum_payment": {
+                        "type": "integer",
+                        "title": "Minimum Payment"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "currency",
+                    "appshare",
+                    "recommended_donation",
+                    "minimum_payment"
+                ],
+                "title": "VendingSetup",
+                "description": "Configuration for a vended application"
+            },
+            "VendingStatus": {
+                "properties": {
+                    "status": { "type": "string", "title": "Status" },
+                    "can_take_payments": {
+                        "type": "boolean",
+                        "title": "Can Take Payments"
+                    },
+                    "needs_attention": {
+                        "type": "boolean",
+                        "title": "Needs Attention"
+                    },
+                    "details_submitted": {
+                        "type": "boolean",
+                        "title": "Details Submitted"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "status",
+                    "can_take_payments",
+                    "needs_attention",
+                    "details_submitted"
+                ],
+                "title": "VendingStatus",
+                "description": "The status object says whether the user is capable of receiving payments,\nand also whether or not there are pending onboarding operations to complete"
+            },
+            "VerificationMethod": {
+                "type": "string",
+                "enum": ["none", "manual", "website", "login_provider"],
+                "title": "VerificationMethod"
+            },
+            "VerificationStatus": {
+                "properties": {
+                    "verified": { "type": "boolean", "title": "Verified" },
+                    "timestamp": {
+                        "anyOf": [{ "type": "string" }, { "type": "null" }],
+                        "title": "Timestamp"
+                    },
+                    "method": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/VerificationMethod"
+                            },
+                            { "type": "null" }
+                        ]
+                    },
+                    "website": {
+                        "anyOf": [{ "type": "string" }, { "type": "null" }],
+                        "title": "Website"
+                    },
+                    "login_provider": {
+                        "anyOf": [
+                            { "$ref": "#/components/schemas/LoginProvider" },
+                            { "type": "null" }
+                        ]
+                    },
+                    "login_name": {
+                        "anyOf": [{ "type": "string" }, { "type": "null" }],
+                        "title": "Login Name"
+                    },
+                    "login_is_organization": {
+                        "anyOf": [{ "type": "boolean" }, { "type": "null" }],
+                        "title": "Login Is Organization"
+                    },
+                    "detail": {
+                        "anyOf": [{ "type": "string" }, { "type": "null" }],
+                        "title": "Detail"
+                    }
+                },
+                "type": "object",
+                "required": ["verified"],
+                "title": "VerificationStatus"
+            },
+            "WalletInfo": {
+                "properties": {
+                    "status": { "type": "string", "title": "Status" },
+                    "cards": {
+                        "items": {
+                            "$ref": "#/components/schemas/PaymentCardInfo"
+                        },
+                        "type": "array",
+                        "title": "Cards"
+                    }
+                },
+                "type": "object",
+                "required": ["status", "cards"],
+                "title": "WalletInfo"
+            },
+            "WebsiteVerificationResult": {
+                "properties": {
+                    "verified": { "type": "boolean", "title": "Verified" },
+                    "detail": {
+                        "anyOf": [
+                            { "$ref": "#/components/schemas/ErrorDetail" },
+                            { "type": "null" }
+                        ]
+                    },
+                    "status_code": {
+                        "anyOf": [{ "type": "integer" }, { "type": "null" }],
+                        "title": "Status Code"
+                    }
+                },
+                "type": "object",
+                "required": ["verified"],
+                "title": "WebsiteVerificationResult"
+            },
+            "WebsiteVerificationToken": {
+                "properties": {
+                    "domain": { "type": "string", "title": "Domain" },
+                    "token": { "type": "string", "title": "Token" }
+                },
+                "type": "object",
+                "required": ["domain", "token"],
+                "title": "WebsiteVerificationToken"
+            }
+        },
+        "securitySchemes": {
+            "HTTPBearer": { "type": "http", "scheme": "bearer" }
+        }
+    }
+}

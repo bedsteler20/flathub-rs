@@ -1,0 +1,1 @@
+A api client for the flathub api written in rust.
