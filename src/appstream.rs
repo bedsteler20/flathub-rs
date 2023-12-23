@@ -68,6 +68,7 @@ pub struct Launchable {
 
 #[derive(serde::Deserialize, Debug, Clone, PartialEq, Eq, PartialOrd, Ord)]
 pub struct Bundle {
+    pub value: String,
     pub version: Option<String>,
     #[serde(rename = "type")]
     pub kind: String,
