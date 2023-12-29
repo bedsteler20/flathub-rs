@@ -16,3 +16,4 @@ pub use appstream::Urls;
 pub use home_page::HomePage;
 pub use pagination::Pagination;
 pub use client::*;
+pub use utils::configure_client;
