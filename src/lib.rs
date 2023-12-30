@@ -4,6 +4,9 @@ mod client;
 mod home_page;
 mod pagination;
 mod utils;
+mod error;
+
+pub use error::Error;
 pub use app_hit::AppHit;
 pub use appstream::Appstream;
 pub use appstream::Bundle;

@@ -1,33 +1,13 @@
 use once_cell::sync::OnceCell;
+use reqwest_middleware::ClientWithMiddleware;
 use serde::de;
+pub(crate) static CLIENT: OnceCell<&ClientWithMiddleware> = OnceCell::new();
 
-pub(crate) static CLIENT: OnceCell<&reqwest::Client> = OnceCell::new();
-
-pub fn get_client() -> &'static reqwest::Client {
-    if let Some(client) = CLIENT.get() {
-        client
-    } else  {
-        let client = reqwest::Client::builder()
-            .default_headers({
-                let mut headers = reqwest::header::HeaderMap::new();
-                headers.insert(
-                    reqwest::header::USER_AGENT,
-                    reqwest::header::HeaderValue::from_static("flathub-rs"),
-                );
-                headers.insert(
-                    reqwest::header::ACCEPT, 
-                    reqwest::header::HeaderValue::from_static("application/json")
-                );
-                headers
-            })
-            .build()
-            .unwrap();
-        configure_client(Box::leak(Box::new(client)));
-        CLIENT.get().unwrap()
-    }
+pub fn get_client() -> &'static ClientWithMiddleware {
+    CLIENT.get().expect("flathub-rs: client not configured")
 }
 
-pub fn configure_client(client: &'static reqwest::Client) {
+pub fn configure_client(client: &'static ClientWithMiddleware) {
     if let Err(e) = CLIENT.set(client) {
         println!("flathub-rs: failed to configure client");
     }

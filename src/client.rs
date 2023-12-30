@@ -5,45 +5,44 @@ use crate::appstream::Appstream;
 use crate::home_page::HomePage;
 use crate::pagination::Pagination;
 use crate::utils::get_client;
-
 fn get_base_url() -> String {
     format!("https://flathub.org/api/v2")
 }
 
-pub async fn list_catagories() -> Result<Vec<String>, reqwest::Error> {
-    get_client()
+pub async fn list_catagories() -> Result<Vec<String>, crate::Error> {
+    Ok(get_client()
         .get(format!("{}/categories", get_base_url()))
         .send()
         .await?
         .json()
-        .await
+        .await?)
 }
 
-pub async fn list_developers() -> Result<Vec<String>, reqwest::Error> {
-    get_client()
+pub async fn list_developers() -> Result<Vec<String>, crate::Error> {
+    Ok(get_client()
         .get(format!("{}/developer", get_base_url()))
         .send()
         .await?
         .json()
-        .await
+        .await?)
 }
 
-pub async fn list_project_groups() -> Result<Vec<String>, reqwest::Error> {
-    get_client()
+pub async fn list_project_groups() -> Result<Vec<String>, crate::Error> {
+    Ok(get_client()
         .get(format!("{}/projectgroup", get_base_url()))
         .send()
         .await?
         .json()
-        .await
+        .await?)
 }
 
-pub async fn list_all_app_ids() -> Result<Vec<String>, reqwest::Error> {
-    get_client()
+pub async fn list_all_app_ids() -> Result<Vec<String>, crate::Error> {
+    Ok(get_client()
         .get(format!("{}/appstream", get_base_url()))
         .send()
         .await?
         .json()
-        .await
+        .await?)
 }
 
 pub async fn status() -> bool {
@@ -57,21 +56,21 @@ pub async fn status() -> bool {
     }
 }
 
-pub async fn runtime_usage() -> Result<HashMap<String, i32>, reqwest::Error> {
-    get_client()
+pub async fn runtime_usage() -> Result<HashMap<String, i32>, crate::Error> {
+    Ok(get_client()
         .get(format!("{}/runtimes", get_base_url()))
         .send()
         .await?
         .json()
-        .await
+        .await?)
 }
 
 pub async fn category(
     category: &str,
     page: i32,
     per_page: i32,
-) -> Result<Pagination<AppHit>, reqwest::Error> {
-    get_client()
+) -> Result<Pagination<AppHit>, crate::Error> {
+    Ok(get_client()
         .get(format!(
             "{}/category/{category}?page={page}&per_page={per_page}",
             get_base_url()
@@ -79,15 +78,15 @@ pub async fn category(
         .send()
         .await?
         .json()
-        .await
+        .await?)
 }
 
 pub async fn developer(
     developer: &str,
     page: i32,
     per_page: i32,
-) -> Result<Pagination<AppHit>, reqwest::Error> {
-    get_client()
+) -> Result<Pagination<AppHit>, crate::Error> {
+    Ok(get_client()
         .get(format!(
             "{}/developer/{developer}?page={page}&per_page={per_page}",
             get_base_url()
@@ -95,7 +94,7 @@ pub async fn developer(
         .send()
         .await?
         .json()
-        .await
+        .await?)
 }
 
 pub async fn subcategory(
@@ -103,8 +102,8 @@ pub async fn subcategory(
     subcategory: &str,
     page: i32,
     per_page: i32,
-) -> Result<Pagination<AppHit>, reqwest::Error> {
-    get_client()
+) -> Result<Pagination<AppHit>, crate::Error> {
+    Ok(get_client()
         .get(format!(
             "{}/category/{category}/subcategory/{subcategory}?page={page}&per_page={per_page}",
             get_base_url()
@@ -112,15 +111,15 @@ pub async fn subcategory(
         .send()
         .await?
         .json()
-        .await
+        .await?)
 }
 
 pub async fn project_group(
     project_group: &str,
     page: i32,
     per_page: i32,
-) -> Result<Pagination<AppHit>, reqwest::Error> {
-    get_client()
+) -> Result<Pagination<AppHit>, crate::Error> {
+    Ok(get_client()
         .get(format!(
             "{}/projectgroup/{project_group}?page={page}&per_page={per_page}",
             get_base_url()
@@ -128,14 +127,14 @@ pub async fn project_group(
         .send()
         .await?
         .json()
-        .await
+        .await?)
 }
 
 pub async fn recently_updated_apps(
     page: i32,
     per_page: i32,
-) -> Result<Pagination<AppHit>, reqwest::Error> {
-    get_client()
+) -> Result<Pagination<AppHit>, crate::Error> {
+    Ok(get_client()
         .get(format!(
             "{}/collection/recently-updated?page={page}&per_page={per_page}",
             get_base_url()
@@ -143,14 +142,14 @@ pub async fn recently_updated_apps(
         .send()
         .await?
         .json()
-        .await
+        .await?)
 }
 
 pub async fn recently_added_apps(
     page: i32,
     per_page: i32,
-) -> Result<Pagination<AppHit>, reqwest::Error> {
-    get_client()
+) -> Result<Pagination<AppHit>, crate::Error> {
+    Ok(get_client()
         .get(format!(
             "{}/collection/recently-added?page={page}&per_page={per_page}",
             get_base_url()
@@ -158,11 +157,11 @@ pub async fn recently_added_apps(
         .send()
         .await?
         .json()
-        .await
+        .await?)
 }
 
-pub async fn verified_apps(page: i32, per_page: i32) -> Result<Pagination<AppHit>, reqwest::Error> {
-    get_client()
+pub async fn verified_apps(page: i32, per_page: i32) -> Result<Pagination<AppHit>, crate::Error> {
+    Ok(get_client()
         .get(format!(
             "{}/collection/verified?page={page}&per_page={per_page}",
             get_base_url()
@@ -170,11 +169,11 @@ pub async fn verified_apps(page: i32, per_page: i32) -> Result<Pagination<AppHit
         .send()
         .await?
         .json()
-        .await
+        .await?)
 }
 
-pub async fn popular_apps(page: i32, per_page: i32) -> Result<Pagination<AppHit>, reqwest::Error> {
-    get_client()
+pub async fn popular_apps(page: i32, per_page: i32) -> Result<Pagination<AppHit>, crate::Error> {
+    Ok(get_client()
         .get(format!(
             "{}/popular/last-month?page={page}&per_page={per_page}",
             get_base_url()
@@ -182,19 +181,19 @@ pub async fn popular_apps(page: i32, per_page: i32) -> Result<Pagination<AppHit>
         .send()
         .await?
         .json()
-        .await
+        .await?)
 }
 
-pub async fn appstream(app_id: &str) -> Result<Appstream, reqwest::Error> {
-    get_client()
+pub async fn appstream(app_id: &str) -> Result<Appstream, crate::Error> {
+    Ok(get_client()
         .get(format!("{}/appstream/{}", get_base_url(), app_id))
         .send()
         .await?
         .json()
-        .await
+        .await?)
 }
 
-pub async fn home_page(items: i32) -> Result<HomePage, reqwest::Error> {
+pub async fn home_page(items: i32) -> Result<HomePage, crate::Error> {
     let (popular_apps, new_apps, updated_apps, verified_apps) = tokio::join!(
         popular_apps(1, items),
         recently_added_apps(1, items),
@@ -209,7 +208,6 @@ pub async fn home_page(items: i32) -> Result<HomePage, reqwest::Error> {
     })
 }
 
-
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -223,13 +221,14 @@ mod tests {
                     reqwest::header::HeaderValue::from_static("flathub-rs"),
                 );
                 headers.insert(
-                    reqwest::header::ACCEPT, 
-                    reqwest::header::HeaderValue::from_static("application/json")
+                    reqwest::header::ACCEPT,
+                    reqwest::header::HeaderValue::from_static("application/json"),
                 );
                 headers
             })
             .build()
             .unwrap();
+        let client = reqwest_middleware::ClientBuilder::new(client).build();
         crate::utils::configure_client(Box::leak(Box::new(client)));
     }
 
